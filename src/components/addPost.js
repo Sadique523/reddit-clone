@@ -16,7 +16,6 @@ function Landing(props) {
   const [title, setTitle] = React.useState();
   const [thread, setThread] = React.useState("r/exams");
   const [itemList, setItemList] = React.useState([]);
-  console.log(itemList);
   React.useEffect(() => {
     let value = {};
     firebase

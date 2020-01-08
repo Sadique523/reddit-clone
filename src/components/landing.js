@@ -25,6 +25,7 @@ function Landing(props) {
   const [active, setActive] = React.useState("hot");
   const [loading, setLoading] = React.useState(true);
   const [itemList, setItemList] = React.useState([]);
+  const [delta, setDelta] = React.useState(0);
   // console.log(itemList);
   React.useEffect(() => {
     let value = {};
@@ -106,7 +107,6 @@ function Landing(props) {
   };
 
   const addLike = post => {
-    console.log(post);
     firebase
       .database()
       .ref(`thread/${post.id}/like/${post.like ? post.like.length : 0}`)
@@ -203,7 +203,10 @@ function Landing(props) {
           {itemList
             ? itemList.map(post => (
                 <Slide
-                  onSlide={() => addLike(post)}
+                  onSlide={(del) => {
+                    if(del > delta) addLike(post);
+                    setDelta(del);
+                  }}
                   onClick={() => props.history.push(`/${post.id}`)}
                 >
                   <Post>

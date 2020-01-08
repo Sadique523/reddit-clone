@@ -216,6 +216,7 @@ export const FAB = styled.div`
     justify-content: center;
     align-items: center;
     color: white;
+    box-shadow: 0 4px 20px rgba(0, 40, 143, 0.1);
   }
   display: none;
 `;

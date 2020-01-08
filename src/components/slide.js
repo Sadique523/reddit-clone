@@ -16,20 +16,20 @@ export default function Slider({ children, onClick, onSlide }) {
     size: down ? 1.1 : 1,
     immediate: name => down && name === "x"
   });
-  const avSize = x.interpolate({
-    map: Math.abs,
-    range: [50, 300],
-    output: ["scale(0.5)", "scale(1)"],
-    extrapolate: "clamp"
-  });
+  if(delta[0] < -75) {
+    onSlide(delta[0]);
+  }
+  // const avSize = x.interpolate({
+  //   map: Math.abs,
+  //   range: [50, 300],
+  //   output: ["scale(0.5)", "scale(1)"],
+  //   extrapolate: "clamp"
+  // });
   return (
     <animated.div
-      onClick={() => {
-        console.log(delta);
-        if (!delta[0]) {
-          onClick && onClick();
-        } else if (delta[0] < -75) {
-          onSlide && onSlide();
+      onClick={(e) => {
+        if(!delta[0]) {
+          onClick();
         }
       }}
       {...bind()}

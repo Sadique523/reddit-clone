@@ -23,7 +23,7 @@ function Landing(props) {
   // console.log(itemList);
   React.useEffect(() => {
     let value = {};
-    console.log(props);
+    // console.log(props);
     firebase
       .database()
       .ref(`thread/${props.match.params.id}`)
@@ -31,7 +31,7 @@ function Landing(props) {
         value = snapshot.val();
         if (value) {
           setPost(value);
-          console.log(value);
+          // console.log(value);
           setLoading(false);
         }
       });
