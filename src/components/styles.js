@@ -209,8 +209,8 @@ export const FAB = styled.div`
     background: tomato;
     border-radius: 100%;
     position: absolute;
-    bottom: 50px;
-    right: 50px;
+    bottom: 40px;
+    right: 40px;
     z-index: 1;
     display: flex;
     justify-content: center;
