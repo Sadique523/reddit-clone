@@ -40,7 +40,7 @@ function Login(props) {
             <i
               onClick={signInWithGoogle}
               style={{ fontSize: 27, cursor: "pointer" }}
-              class="icon ion-md-flame"
+              class="icon ion-logo-google"
             />
           </div>
         </Card>
