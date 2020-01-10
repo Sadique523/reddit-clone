@@ -202,10 +202,18 @@ export const Select = styled.select`
   max-width: 100px;
 `;
 
+export const Description = styled.div`
+  padding: 0px 40px;
+  font-size: 12px;
+  @media only screen and (max-width: 991px) {
+    padding: 0px 20px;
+  }
+`;
+
 export const FAB = styled.div`
   @media only screen and (max-width: 991px) {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: tomato;
     border-radius: 100%;
     position: absolute;
@@ -213,10 +221,11 @@ export const FAB = styled.div`
     right: 40px;
     z-index: 1;
     display: flex;
+    font-size: 20px;
     justify-content: center;
     align-items: center;
     color: white;
-    box-shadow: 0 4px 20px rgba(0, 40, 143, 0.1);
+    box-shadow: 2px 6px 12px -3px rgb(51, 51, 50);
   }
   display: none;
 `;

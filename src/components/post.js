@@ -11,6 +11,7 @@ import {
   PostContent,
   PostStuff,
   VoteCount,
+  Description,
   Header,
   Comments,
   Button,
@@ -23,7 +24,7 @@ function Landing(props) {
   // console.log(itemList);
   React.useEffect(() => {
     let value = {};
-    // console.log(props);
+    console.log(props);
     firebase
       .database()
       .ref(`thread/${props.match.params.id}`)
@@ -31,7 +32,7 @@ function Landing(props) {
         value = snapshot.val();
         if (value) {
           setPost(value);
-          // console.log(value);
+          console.log(value);
           setLoading(false);
         }
       });
@@ -158,10 +159,17 @@ function Landing(props) {
               </VoteCount>
             </PostStuff>
           </Post>
+          <Description>{post.description}</Description>
           <Comments>
             Add a comment
             <div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end"
+                }}
+              >
                 <TextArea
                   value={comment}
                   onChange={e => addComment(e.target.value)}

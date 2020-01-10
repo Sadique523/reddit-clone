@@ -3,7 +3,6 @@ import firebase from "firebase";
 import { providers, firebaseAppAuth } from "./firebase";
 import withFirebaseAuth from "react-with-firebase-auth";
 import Moment from "react-moment";
-import Slide from "./slide";
 
 import {
   Container,
@@ -16,6 +15,8 @@ import {
   PostContent,
   Header,
   FAB,
+  PostStuff,
+  VoteCount,
   TimeFilter,
   Count,
   LikeCount,
@@ -25,7 +26,6 @@ function Landing(props) {
   const [active, setActive] = React.useState("hot");
   const [loading, setLoading] = React.useState(true);
   const [itemList, setItemList] = React.useState([]);
-  const [delta, setDelta] = React.useState(0);
   // console.log(itemList);
   React.useEffect(() => {
     let value = {};
@@ -107,6 +107,7 @@ function Landing(props) {
   };
 
   const addLike = post => {
+    console.log(post);
     firebase
       .database()
       .ref(`thread/${post.id}/like/${post.like ? post.like.length : 0}`)
@@ -146,10 +147,7 @@ function Landing(props) {
             <i className="icon ion-md-flame" />
             Hot
           </ListItem>
-          <ListItem onClick={() => props.history.push("/addpost")}>
-            <i className="icon ion-md-add-circle" />
-            New
-          </ListItem>
+
           {/* <ListItem
             onClick={() => setActive("rising")}
             active={active === "rising" ? true : false}
@@ -165,11 +163,20 @@ function Landing(props) {
             Top
           </ListItem> */}
         </List>
+        <List style={{ borderTop: "1px solid #e1e2e3" }}>
+          <ListItem
+            style={{ color: "black" }}
+            onClick={() => props.history.push("/addpost")}
+          >
+            <i className="icon ion-md-add-circle" />
+            Create New Post
+          </ListItem>
+        </List>
       </SideBar>
       <PostContainer>
         <Header>
           <div style={{ display: "flex" }}>
-            <p style={{ fontWeight: "bold" }}>Rising</p>
+            <p style={{ fontWeight: "bold" }}>Hot</p>
             <TimeFilter>
               PAST 24 HOURS
               <i className="icon ion-md-arrow-dropdown" />
@@ -178,7 +185,8 @@ function Landing(props) {
               <i className="icon ion-md-add" />
             </FAB>
           </div>
-          <div
+
+          {/* <div
             style={{
               display: "flex",
               minWidth: 100,
@@ -188,77 +196,70 @@ function Landing(props) {
             <div style={{ fontSize: 25 }}>
               <i className="icon ion-md-heart" />
             </div>
-            {JSON.parse(localStorage.getItem("@user")) ? (
-              <img
-                style={{ borderRadius: "50%" }}
-                width="30px"
-                height="30px"
-                alt="img"
-                src={JSON.parse(localStorage.getItem("@user")).photoURL}
-              />
-            ) : null}
-          </div>
+           
+          </div> */}
+          {JSON.parse(localStorage.getItem("@user")) ? (
+            <img
+              style={{ borderRadius: "50%" }}
+              width="30px"
+              height="30px"
+              alt="img"
+              src={JSON.parse(localStorage.getItem("@user")).photoURL}
+            />
+          ) : null}
         </Header>
         <Posts>
           {itemList
             ? itemList.map(post => (
-                <Slide
-                  onSlide={(del) => {
-                    if(del > delta) addLike(post);
-                    setDelta(del);
-                  }}
-                  onClick={() => props.history.push(`/${post.id}`)}
-                >
-                  <Post>
-                    <PostContent>
-                      <img
-                        width="100px"
-                        height="75px"
-                        src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                        alt="abc"
+                <Post onClick={() => props.history.push(`/${post.id}`)}>
+                  <PostContent>
+                    <img
+                      width="100px"
+                      height="75px"
+                      src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                      alt="abc"
+                    />
+                    <div>
+                      <p>{post.name}</p>
+                      <p
+                        style={{
+                          color: "grey",
+                          fontSize: 12,
+                          paddingTop: 10
+                        }}
+                      >
+                        submitted <Moment fromNow>{post.time}</Moment> by{" "}
+                        {post.user}
+                      </p>
+                      <p style={{ fontSize: 12, paddingTop: 5 }}>
+                        {post.thread}
+                      </p>
+                      <Count>
+                        {/* <LikeCount>
+                          <i className="icon ion-md-heart" />{" "}
+                          {post.like ? post.like.length : 0}
+                        </LikeCount> */}
+                        <CommentsCount>
+                          <i className="icon ion-md-chatbubbles" />{" "}
+                          {post.comments ? post.comments.length : 0}
+                        </CommentsCount>
+                      </Count>
+                    </div>
+                  </PostContent>
+                  <PostStuff>
+                    <VoteCount>
+                      <i
+                        class="icon ion-md-arrow-dropup"
+                        onClick={e => updatePostVote(e, post, "add")}
                       />
-                      <div>
-                        <p>{post.name}</p>
-                        <p
-                          style={{
-                            color: "grey",
-                            fontSize: 12,
-                            paddingTop: 10
-                          }}
-                        >
-                          submitted <Moment fromNow>{post.time}</Moment> by{" "}
-                          {post.user}
-                        </p>
-                        <p style={{ fontSize: 12, paddingTop: 5 }}>
-                          {post.thread}
-                        </p>
-                        <Count>
-                          <LikeCount>
-                            <i className="icon ion-md-heart" />{" "}
-                            {post.like ? post.like.length : 0}
-                          </LikeCount>
-                          <CommentsCount>
-                            <i className="icon ion-md-chatbubbles" />{" "}
-                            {post.comments ? post.comments.length : 0}
-                          </CommentsCount>
-                        </Count>
-                      </div>
-                    </PostContent>
-                    {/* <PostStuff>
-                      <VoteCount>
-                        <i
-                          class="icon ion-md-arrow-dropup"
-                          onClick={e => updatePostVote(e, post, "add")}
-                        />
-                        {post.vote}
-                        <i
-                          class="icon ion-md-arrow-dropdown"
-                          onClick={e => updatePostVote(e, post, "subtract")}
-                        />
-                      </VoteCount>
-                    </PostStuff> */}
-                  </Post>
-                </Slide>
+                      {post.vote}
+                      <i
+                        class="icon ion-md-arrow-dropdown"
+                        onClick={e => updatePostVote(e, post, "subtract")}
+                      />
+                    </VoteCount>
+                  </PostStuff>
+                </Post>
               ))
             : null}
         </Posts>
