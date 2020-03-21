@@ -12,7 +12,7 @@ const modalStyle = {
       left: '50%',
       right: 'auto',
       width: '100%',
-      maxWidth: '450px',
+      maxWidth: '350px',
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)'
@@ -71,7 +71,7 @@ function Header() {
             <Modal
                 isOpen={modalIsOpen}
                 style={modalStyle}
-                onRequestClose={() => setModalIsOpen(true)}
+                onRequestClose={() => setModalIsOpen(false)}
                 contentLabel="Example Modal"
             >
                 <Column>

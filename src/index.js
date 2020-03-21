@@ -13,11 +13,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route component={Landing} exact path="/landing" />
-          <Route component={Login} path="/login" />
-          <Route component={AddPost} path="/addpost" />
+          {/* <Route component={Landing} exact path="/landing" />
+          <Route component={Login} path="/login" /> */}
+          {/* <Route component={AddPost} path="/addpost" /> */}
           <Route component={Watch} path="/" />
-          <Route component={Post} path="/:id" />
+          {/* <Route component={Post} path="/:id" /> */}
         </Switch>
       </BrowserRouter>
     </div>
