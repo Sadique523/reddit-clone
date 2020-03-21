@@ -1,7 +1,5 @@
 import React from 'react';
 import firebase from "firebase";
-import { providers, firebaseAppAuth } from "./firebase";
-import withFirebaseAuth from "react-with-firebase-auth";
 import Card, { Container, InnerContainer, Text, Row, Avatar, Thumbnail, Column } from '../styles';
 import Header from './header'
 
@@ -52,8 +50,5 @@ function Landing() {
     )
 }
 
-export default withFirebaseAuth({
-    providers,
-    firebaseAppAuth
-  })(Landing);
+export default Landing;
   

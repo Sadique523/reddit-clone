@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Column, Input, Select } from '../styles';
 import firebase from "firebase";
-import { providers, firebaseAppAuth } from "./firebase";
-import withFirebaseAuth from "react-with-firebase-auth";
 import Modal from 'react-modal';
 
 
@@ -95,7 +93,4 @@ function Header() {
     )
 }
 
-export default withFirebaseAuth({
-    providers,
-    firebaseAppAuth
-})(Header);
+export default Header;
