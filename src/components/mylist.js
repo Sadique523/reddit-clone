@@ -13,7 +13,7 @@ function MyList(props) {
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}`)
+          .ref(`watch-tv/${JSON.parse(localStorage.getItem('@user')).uid}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];

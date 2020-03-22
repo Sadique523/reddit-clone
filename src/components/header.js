@@ -28,7 +28,7 @@ function Header(props) {
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}`)
+          .ref(`watch-tv/${JSON.parse(localStorage.getItem('@user')).uid}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];
@@ -42,7 +42,7 @@ function Header(props) {
     const addSuggestion = () => {
         firebase
         .database()
-        .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}/${itemList.length + 1}`)
+        .ref(`watch-tv/${JSON.parse(localStorage.getItem('@user')).uid}/${itemList.length + 1}`)
         .update({
             name,
             tags,
