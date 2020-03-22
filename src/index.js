@@ -6,6 +6,7 @@ import Login from "./components/login";
 // import Post from "./components/post";
 // import AddPost from "./components/addPost";
 import Watch from "./components/watch";
+import MyList from "./components/mylist";
 import YourList from "./components/mylist";
 import "./styles.css";
 
@@ -18,8 +19,8 @@ function App() {
           <Route component={Watch} exact="true" path="/" />
           <Route component={Login} path="/login" /> 
           {/* <Route component={AddPost} path="/addpost" /> */}
-          <Route component={YourList} path="/my-list" />
-          {/* <Route component={Post} path="/:id" /> */}
+          <Route component={MyList} path="/my-list" />
+          <Route component={YourList} path="/:id" />
         </Switch>
       </BrowserRouter>
     </div>
