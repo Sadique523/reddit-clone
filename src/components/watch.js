@@ -16,9 +16,13 @@ function Landing() {
             value = snapshot.val();
             let array = [];
             if (value) {
-              Object.keys(value).forEach(item => array.push(value[item]));
-              setItemList(array);
-              setLoading(false);
+                Object.keys(value).forEach(item => {
+                    if (value[item].name) {
+                        array.push(value[item]);
+                    }
+                });
+                setItemList(array);
+                setLoading(false);
             }
           });
     }, []);

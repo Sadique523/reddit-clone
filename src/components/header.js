@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Column, Input, Select } from '../styles';
+import { Button, Column, Input, Select, Row, Avatar } from '../styles';
 import firebase from "firebase";
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
@@ -28,7 +28,7 @@ function Header(props) {
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv/${JSON.parse(localStorage.getItem('@user')).uid}`)
+          .ref(`watch-tv/users/${JSON.parse(localStorage.getItem('@user')).uid}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];
@@ -42,7 +42,7 @@ function Header(props) {
     const addSuggestion = () => {
         firebase
         .database()
-        .ref(`watch-tv/${JSON.parse(localStorage.getItem('@user')).uid}/${itemList.length + 1}`)
+        .ref(`watch-tv/users/${JSON.parse(localStorage.getItem('@user')).uid}/${itemList.length + 1}`)
         .update({
             name,
             tags,
@@ -89,8 +89,14 @@ function Header(props) {
                 </Column>
               
             </Modal>
-            
-            {props.location.pathname === '/' ?  <Button onClick={() => props.history.push('/login')}>Create your list</Button> : <Button onClick={() => setModalIsOpen(true)}>Add Show</Button>}
+            {
+                props.location.pathname === '/' ?  
+                <Button onClick={() => props.history.push('/login')}>Create your list</Button> : 
+                <div style={{display: 'flex'}}>
+                    <Button onClick={() => setModalIsOpen(true)}>Add Show</Button>
+                    <Avatar style={{marginLeft: 20}} src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/10f13510774061.560eadfde5b61.png" alt="netflix" />
+                </div>
+            }
         </div>
     )
 }
