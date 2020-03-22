@@ -18,7 +18,6 @@ const modalStyle = {
     }
 };
 function Header(props) {
-    console.log(props);
     const [itemList, setItemList] = React.useState([]);
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const [name, setName] = React.useState('');
@@ -29,7 +28,7 @@ function Header(props) {
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv`)
+          .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];
@@ -43,7 +42,7 @@ function Header(props) {
     const addSuggestion = () => {
         firebase
         .database()
-        .ref(`watch-tv/${itemList.length + 1}`)
+        .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}/${itemList.length + 1}`)
         .update({
             name,
             tags,

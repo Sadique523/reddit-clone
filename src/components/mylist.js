@@ -6,8 +6,6 @@ import Card, { Container, InnerContainer, Text, Row, Avatar, Thumbnail, Column }
 import Header from './header'
 
 function MyList(props) {
-
-    console.log(JSON.parse(localStorage.getItem('@user')));
     const [loading, setLoading] = React.useState(true);
     const [itemList, setItemList] = React.useState([]);
 
@@ -15,7 +13,7 @@ function MyList(props) {
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv`)
+          .ref(`watch-tv/${JSON.stringify(localStorage.getItem('@user')).uid}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];
