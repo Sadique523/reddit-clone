@@ -65,8 +65,8 @@ function Header(props) {
     }
 
     return (
-        <div style={{height: 40, display: 'flex', justifyContent: 'space-between', fontSize: '24px', fontWeight: 'bold', padding: 20}}>
-            what.to.watch
+        <div style={{height: 40, display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', padding: 20}}>
+            <span style={{fontSize: '24px', cursor: 'pointer'}} onClick={() => props.history.push('/')}>what.to.watch</span>
             <Modal
                 isOpen={modalIsOpen}
                 style={modalStyle}

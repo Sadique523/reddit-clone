@@ -28,12 +28,16 @@ function Landing() {
     }, []);
 
     console.log('list', itemList);
-
+    
+    if(loading) {
+        return <div>Loading...</div>
+    }
     return (
         <div>
             <Header />
             <Container>
                 <InnerContainer>
+                    {/* <h4 style={{paddingLeft: 12}}>Trending</h4> */}
                     {itemList.map(item => {
                         return (
                             <Card>
@@ -41,6 +45,7 @@ function Landing() {
                                 <Row>
                                 <Column>    
                                     <Text>{item.name}</Text>
+                                    <Text style={{fontSize: 12, marginTop: 10}}>In 2 people's list</Text>
                                     <Text style={{fontSize: 12, color: 'grey', marginTop: 10}}>{item.type}</Text>
                                 </Column>  
                                     {item.streamingOn === 'Netflix' ? <Avatar src="https://www.freepnglogos.com/uploads/netflix-logo-circle-png-5.png" alt="netflix" /> : <Avatar src="https://www.mediaplaynews.com/wp-content/uploads/2018/04/Prime-Video-Stacked.jpg" alt="netflix" /> }
