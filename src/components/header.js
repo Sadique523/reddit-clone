@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Column, Input, Select } from '../styles';
 import firebase from "firebase";
 import Modal from 'react-modal';
+import { withRouter } from 'react-router-dom';
 
 
 const modalStyle = {
@@ -16,7 +17,8 @@ const modalStyle = {
       transform: 'translate(-50%, -50%)'
     }
 };
-function Header() {
+function Header(props) {
+    console.log(props);
     const [itemList, setItemList] = React.useState([]);
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const [name, setName] = React.useState('');
@@ -88,9 +90,10 @@ function Header() {
                 </Column>
               
             </Modal>
-            <Button onClick={() => setModalIsOpen(true)}>Add Show</Button>
+            
+            {props.location.pathname === '/' ?  <Button onClick={() => props.history.push('/login')}>Create your list</Button> : <Button onClick={() => setModalIsOpen(true)}>Add Show</Button>}
         </div>
     )
 }
 
-export default Header;
+export default withRouter(Header);

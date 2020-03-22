@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 function Login(props) {
   const { user, signOut, signInWithGoogle, history } = props;
   if (user) {
-    history.push("/");
+    history.push("/my-list");
     localStorage.setItem("@user", JSON.stringify(user));
   }
   return (
