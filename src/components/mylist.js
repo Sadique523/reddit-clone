@@ -29,13 +29,12 @@ function MyList(props) {
 
     return (
         <div>
-            <Header />
+            <Header authProps={props}/>
             <div style={{padding: '20px 50px'}}>
                     <h2>My List</h2><i class="share" />
                     <h5 style={{paddingTop: 5, color: 'grey'}}>{itemList.length} results</h5>    
                 </div>
             <Container>
-               
                 <InnerContainer style={{width: '70%', flexDirection: 'row', flexWrap: 'wrap'}}>
                     {itemList.map(item => {
                         return (
