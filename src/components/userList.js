@@ -10,10 +10,11 @@ function MyList(props) {
     const [itemList, setItemList] = React.useState([]);
 
     React.useEffect(() => {
+        console.log(props);
         let value = {};
         firebase
           .database()
-          .ref(`watch-tv/users/${props.params.match.id}`)
+          .ref(`watch-tv/users/${props.match.id}`)
           .once("value", function(snapshot) {
             value = snapshot.val();
             let array = [];

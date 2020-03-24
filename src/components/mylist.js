@@ -25,8 +25,6 @@ function MyList(props) {
           });
     }, []);
 
-    console.log('list', itemList);
-
     return (
         <div>
             <Header/>

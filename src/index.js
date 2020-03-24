@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* <Route component={Landing} exact path="/landing" /> */}
-          <Route component={Watch} exact="true" path="/" />
+          <Route component={Watch} exact={true} path="/" />
           <Route component={Login} path="/login" /> 
           {/* <Route component={AddPost} path="/addpost" /> */}
           <Route component={MyList} path="/my-list" />
