@@ -7,7 +7,7 @@ import Login from "./components/login";
 // import AddPost from "./components/addPost";
 import Watch from "./components/watch";
 import MyList from "./components/mylist";
-import YourList from "./components/mylist";
+import YourList from "./components/userList";
 import "./styles.css";
 
 function App() {
