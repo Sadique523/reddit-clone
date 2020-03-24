@@ -29,7 +29,7 @@ function MyList(props) {
 
     return (
         <div>
-            <Header authProps={props}/>
+            <Header/>
             <div style={{padding: '20px 50px'}}>
                     <h2>My List</h2><i class="share" />
                     <h5 style={{paddingTop: 5, color: 'grey'}}>{itemList.length} results</h5>    
