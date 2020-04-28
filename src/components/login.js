@@ -7,41 +7,44 @@ import Button from "@material-ui/core/Button";
 
 function Login(props) {
   const { user, signOut, signInWithGoogle, history } = props;
-  if (user) {
-    history.push("/my-list");
+
+  if (user && !user.isAnonymous) {
+    history.push("/");
     localStorage.setItem("@user", JSON.stringify(user));
   }
   return (
     <div
       style={{
         display: "flex",
-        marginTop: 50,
+        height: "100vh",
         justifyContent: "center",
         alignItems: "center"
       }}
     >
       <div>
-        <Card style={{ padding: "100px" }}>
+        <Card style={{ padding: "50px 100px" }}>
           <h1 style={{ textAlign: "center" }}>Login</h1>
-          <TextField label="Email" name="email" />
+          {/* <TextField label="Email" name="email" />
           <br />
           <TextField label="Password" name="password" type="password" />
-          <br />
+          <br /> */}
           <div style={{ textAlign: "right" }}>
             <Button
               variant="contained"
               primary={true}
-              style={{ marginTop: 20 }}
+              onClick={signInWithGoogle}
+              style={{ marginTop: 20, background: 'tomato', color: 'white' }}
             >
-              Login
+               <i
+             
+              style={{ fontSize: 27, cursor: "pointer", marginRight: 20, color: 'white' }}
+              class="icon ion-logo-google"
+            />
+              Login with google
             </Button>
           </div>
           <div>
-            <i
-              onClick={signInWithGoogle}
-              style={{ fontSize: 27, cursor: "pointer" }}
-              class="icon ion-logo-google"
-            />
+           
           </div>
         </Card>
       </div>
