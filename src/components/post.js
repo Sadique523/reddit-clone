@@ -1,5 +1,6 @@
 import React from "react";
 import firebase from "firebase";
+import Linkify from 'react-linkify';
 import { providers, firebaseAppAuth } from "./firebase";
 import withFirebaseAuth from "react-with-firebase-auth";
 import Moment from "react-moment";
@@ -159,7 +160,9 @@ function Landing(props) {
               </VoteCount>
             </PostStuff>
           </Post>
-          <Description>{post.description}</Description>
+          <Linkify>
+            <Description>{post.description}</Description>
+          </Linkify>
           <Comments>
             Add a comment
             <div>
