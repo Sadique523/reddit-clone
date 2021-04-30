@@ -41,7 +41,7 @@ function Landing(props) {
           setLoading(true);
         }
       });
-  }, [loading]);
+  }, [loading, props.user]);
 
   const createPost = () => {
     firebase
