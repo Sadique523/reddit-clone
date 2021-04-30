@@ -141,7 +141,7 @@ function Landing(props) {
               <div>
                 <p>{post.name}</p>
                 <p style={{ color: "grey", fontSize: 12, paddingTop: 10 }}>
-                  submitted <Moment fromNow>{post.time}</Moment> by {post.user}
+                  posted <Moment fromNow>{post.time}</Moment> by {post.user}
                 </p>
                 <p style={{ fontSize: 12, paddingTop: 5 }}>{post.thread}</p>
               </div>

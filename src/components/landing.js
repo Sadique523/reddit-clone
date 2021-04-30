@@ -225,7 +225,7 @@ function Landing(props) {
                           paddingTop: 10
                         }}
                       >
-                        submitted <Moment fromNow>{post.time}</Moment> by{" "}
+                        posted <Moment fromNow>{post.time}</Moment> by{" "}
                         {post.user}
                       </p>
                       <p style={{ fontSize: 12, paddingTop: 5 }}>
