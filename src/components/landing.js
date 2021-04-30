@@ -131,13 +131,14 @@ function Landing(props) {
   return (
     <Container>
       <SideBar>
-        <div style={{ padding: 20 }}>
+        <div style={{ padding: 20, display: 'flex', alignItems: 'center' }}>
           <img
-            width="100"
+            width="50"
             height="auto"
-            src="http://www.vectorico.com/download/social_media/Reddit-logo.png"
+            src="https://www.un.org/sites/un2.un.org/files/covid19_response_icon.svg"
             alt="img"
           />
+          <span style={{paddingLeft: 10, color: 'tomato'}}>Covid Info</span>
         </div>
         <List>
           <ListItem
@@ -145,7 +146,7 @@ function Landing(props) {
             active={active === "hot" ? true : false}
           >
             <i className="icon ion-md-flame" />
-            Hot
+            Trending
           </ListItem>
 
           {/* <ListItem
@@ -176,11 +177,7 @@ function Landing(props) {
       <PostContainer>
         <Header>
           <div style={{ display: "flex" }}>
-            <p style={{ fontWeight: "bold" }}>Hot</p>
-            <TimeFilter>
-              PAST 24 HOURS
-              <i className="icon ion-md-arrow-dropdown" />
-            </TimeFilter>
+            <p style={{ fontWeight: "bold" }}>Trending</p>
             <FAB onClick={() => props.history.push("/addpost")}>
               <i className="icon ion-md-add" />
             </FAB>
@@ -214,9 +211,9 @@ function Landing(props) {
                 <Post onClick={() => props.history.push(`/${post.id}`)}>
                   <PostContent>
                     <img
-                      width="100px"
+                      width="120px"
                       height="75px"
-                      src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                      src="https://www.cleanairltd.co.uk/wp-content/uploads/2020/07/COVID19_RESPONSE_LOGO-2.jpg"
                       alt="abc"
                     />
                     <div>

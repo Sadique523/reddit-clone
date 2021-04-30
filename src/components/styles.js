@@ -37,6 +37,7 @@ export const TimeFilter = styled.p`
 
 export const ListItem = styled.li`
   padding: 15px 50px;
+  cursor: pointer;
   border-left: ${props => (props.active ? "5px solid tomato" : null)};
   color: ${props => (props.active ? "black" : "#e2e3e2")};
   font-size: 14px;
@@ -52,6 +53,7 @@ export const ListItem = styled.li`
 export const Header = styled.div`
   padding: 50px 50px 0px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   @media only screen and (max-width: 991px) {
     padding: 50px 20px 0px;
@@ -77,6 +79,7 @@ export const VoteCount = styled.div`
 export const Posts = styled.div`
   background: white;
   margin: 50px;
+  cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 40, 143, 0.1);
   border-radius: 3px;
   overflow: hidden;

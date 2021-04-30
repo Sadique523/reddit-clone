@@ -14,7 +14,8 @@ import {
 } from "./styles";
 function Landing(props) {
   const [title, setTitle] = React.useState();
-  const [thread, setThread] = React.useState("r/exams");
+  const [description, setDescription] = React.useState();
+  const [thread, setThread] = React.useState("r/covid19");
   const [itemList, setItemList] = React.useState([]);
   React.useEffect(() => {
     let value = {};
@@ -37,6 +38,7 @@ function Landing(props) {
       .update({
         id: itemList.length + 1,
         name: title,
+        description: description,
         thread: thread,
         time: new Date(),
         user: JSON.parse(localStorage.getItem("@user")).displayName,
@@ -56,22 +58,22 @@ function Landing(props) {
   const onChangeTitle = e => {
     setTitle(e.target.value);
   };
-  // const onChangeDescription = e => {
-  //   setDescription(e.target.value);
-  // };
+  const onChangeDescription = e => {
+    setDescription(e.target.value);
+  };
   return (
     <Container>
       <PostContainer>
         <Header>
-          <div style={{ display: "flex" }}>
-            <img
-              onClick={() => props.history.push("/")}
-              width="100"
-              height="auto"
-              src="http://www.vectorico.com/download/social_media/Reddit-logo.png"
-              alt="img"
-            />
-          </div>
+        <div onClick={() => props.history.push("/")} style={{ padding: 20, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+          <img
+            width="50"
+            height="auto"
+            src="https://www.un.org/sites/un2.un.org/files/covid19_response_icon.svg"
+            alt="img"
+          />
+          <span style={{paddingLeft: 10, color: 'tomato'}}>Covid Info</span>
+        </div>
           {JSON.parse(localStorage.getItem("@user")) ? (
             <img
               style={{ borderRadius: "50%" }}
@@ -86,15 +88,16 @@ function Landing(props) {
           <AddPostContainer>
             <input value={title} onChange={onChangeTitle} placeholder="Title" />
             <textarea
-              // value={title}
-              // onChange={onChangeTitle}
+              value={description}
+              onChange={onChangeDescription}
               name="description"
               type="text"
               placeholder="Description"
             />
             <Select onChange={e => setThread(e.target.value)}>
-              <option>r/exams</option>
-              <option>r/college-fests</option>
+              <option>c/covid19</option>
+              <option>c/essentials</option>
+              <option>c/vaccince</option>
             </Select>
             <div style={{ textAlign: "right" }}>
               <Button onClick={() => createPost()}>Post</Button>

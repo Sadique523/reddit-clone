@@ -109,15 +109,15 @@ function Landing(props) {
     <Container>
       <PostContainer>
         <Header>
-          <div style={{ display: "flex" }}>
-            <img
-              onClick={() => props.history.push("/")}
-              width="100"
-              height="auto"
-              src="http://www.vectorico.com/download/social_media/Reddit-logo.png"
-              alt="img"
-            />
-          </div>
+        <div onClick={() => props.history.push("/")} style={{ padding: 20, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+          <img
+            width="50"
+            height="auto"
+            src="https://www.un.org/sites/un2.un.org/files/covid19_response_icon.svg"
+            alt="img"
+          />
+          <span style={{paddingLeft: 10, color: 'tomato'}}>Covid Info</span>
+        </div>
           {JSON.parse(localStorage.getItem("@user")) ? (
             <img
               style={{ borderRadius: "50%" }}
@@ -132,9 +132,9 @@ function Landing(props) {
           <Post>
             <PostContent>
               <img
-                width="100px"
+                width="120px"
                 height="75px"
-                src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                src="https://www.cleanairltd.co.uk/wp-content/uploads/2020/07/COVID19_RESPONSE_LOGO-2.jpg"
                 alt="abc"
               />
               <div>
