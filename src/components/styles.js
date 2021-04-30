@@ -95,6 +95,9 @@ export const Post = styled.div`
   justify-content: space-between;
   @media only screen and (max-width: 991px) {
     padding: 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #f1f2f3;
+    }
   }
   /* &:hover {
     background-color: #fafafa;
