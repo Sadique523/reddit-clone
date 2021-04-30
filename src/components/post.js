@@ -109,7 +109,7 @@ function Landing(props) {
     <Container>
       <PostContainer>
         <Header>
-        <div onClick={() => props.history.push("/")} style={{ padding: 20, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+        <div onClick={() => props.history.push("/")} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
           <img
             width="50"
             height="auto"
